@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv/config');
-// xablau
+
 const { PORT, UPSIDEDOWN_MODE } = process.env;
 
 const strangerThingsDataset = require('./data/dataset/stranger-things-characters.json');
@@ -20,7 +20,7 @@ const strangerThingsService = new StrangerThingsService(
 app.use(cors());
 
 const hereIsTheUpsideDown = UPSIDEDOWN_MODE === 'true';
-// Se aqui é ele existe então é true, logo no env vai ser false. Pra ser ser diferente
+
 app.get('/', (req, res) => {
   const characters = strangerThingsService.search(
     req.query,
