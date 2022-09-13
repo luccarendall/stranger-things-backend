@@ -17,8 +17,8 @@ const strangerThingsService = new StrangerThingsService(
 
 app.use(cors());
 
-const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE;
-
+const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE === true;
+// Se aqui é ele existe então é true, logo no env vai ser false. Pra ser ser diferente
 app.get('/', (req, res) => {
   const characters = strangerThingsService.search(
     req.query,
@@ -30,6 +30,6 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log(`Escutando na porta ${PORT}`);
 });
